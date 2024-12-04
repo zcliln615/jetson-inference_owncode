@@ -219,7 +219,7 @@ net->PrintProfilerTimes();
 NV_TENSORRT_MAJOR, NV_TENSORRT_MINOR, NV_TENSORRT_PATCH等宏输出TensorRT的相关性信息。
 net->GetPrecision()返回当前使用的网络精度，net->GetNetworkFPS()返回当前使用的网络帧率。
 
-![img](image\网络精度.png)
+![img](image/网络精度.png)
 
 4. 释放内存
 
