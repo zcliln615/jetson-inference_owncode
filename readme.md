@@ -42,8 +42,7 @@
    `#include "videoSource.h"`:包含了视频捕获的接口，位于jetson-untils内。[见接口调用](https://rawgit.com/dusty-nv/jetson-inference/master/docs/html/videoSource_8h.html)。
    `#include "videoOutput.h"`:包含了视频输出的接口，位于jetson-untils内。[见接口调用](https://rawgit.com/dusty-nv/jetson-inference/master/docs/html/videoOutput_8h.html)。
    `#include "poseNet.cpp"`:包含了posenet姿态估计的接口，位于jetson-inference内。[见接口调用](https://rawgit.com/dusty-nv/jetson-inference/master/docs/html/poseNet_8h.html)。
-   `#include <signal.h>`:c标准库，用于系统处理信号，如终止指令`ctrl+c`。[见接口调用](https://runoob.com/cprogramming/c-standard-library-signal-h.html)。
-
+   `#include <signal.h>`:c标准库，用于系统处理信号，如终止指令 `ctrl+c`。[见接口调用](https://runoob.com/cprogramming/c-standard-library-signal-h.html)。
 3. 使用 signal 函数来捕捉 SIGINT 信号（通常由 Ctrl+C 产生）
 
 ```cpp
@@ -71,7 +70,7 @@ int usage()
     printf("usage: posenet [--help] [--network=NETWORK] ...\n");
     printf("                input_URI [output_URI]\n\n");
     printf("Run pose estimation DNN on a video/image stream.\n");
-    printf("See below for additional arguments that may not be shown above.\n\n");	
+    printf("See below for additional arguments that may not be shown above.\n\n");
     printf("positional arguments:\n");
     printf("    input_URI       resource URI of input stream  (see videoSource below)\n");
     printf("    output_URI      resource URI of output stream (see videoOutput below)\n\n");
@@ -151,8 +150,8 @@ const uint32_t overlayFlags = poseNet::OverlayFlagsFromStr(cmdLine.GetString("ov
 
 cmdLine.GetString(“命令字符串”，“命令值字符串”，...)[用法见](https://rawgit.com/dusty-nv/jetson-inference/master/docs/html/group__commandLine.html#a79b0fc5258dbd12ba4b0cb5df77d424c),匹配上返回“命令值字符串”指针，反之则返回NULL。
 poseNet::OverlayFlagsFromStr()[用法见](https://rawgit.com/dusty-nv/jetson-inference/master/docs/html/group__poseNet.html#a1bebbf414fd20210c469223433bb604a)，将字符串序列转换为 OverlayFlags 枚举。
-该代码完成输出视频的处理相关设置:==有关键点并连接==。
-![](https://github.com/zcliln615/jetson-inference_owncode/blob/main/image/overlayflag.png)
+该代码完成输出视频的处理相关设置: 有关键点并连接。
+![img](image\overlayflag.png)
 
 #### 主循环
 
@@ -174,7 +173,7 @@ if( !input->Capture(&image, &status) )
 {
 	if( status == videoSource::TIMEOUT )
     {
-        continue;     
+        continue;   
     }   
      break; 
 }
@@ -218,8 +217,9 @@ net->PrintProfilerTimes();
 ```
 
 NV_TENSORRT_MAJOR, NV_TENSORRT_MINOR, NV_TENSORRT_PATCH等宏输出TensorRT的相关性信息。
-net->GetPrecision()返回当前使用的网络精度，net->GetNetworkFPS()返回当前使用的网络帧率
-![](https://github.com/zcliln615/jetson-inference_owncode/blob/main/image/网络精度.png)
+net->GetPrecision()返回当前使用的网络精度，net->GetNetworkFPS()返回当前使用的网络帧率。
+
+![img](image\网络精度.png)
 
 4. 释放内存
 
@@ -253,7 +253,7 @@ return 0;
 #include <fstream> // 添加头文件以处理文件操作
 ```
 
-调用jetson-inference是最好指定各库所处位置，然后添加`<fstream>`文件流用于写入文件。
+调用jetson-inference是最好指定各库所处位置，然后添加 `<fstream>`文件流用于写入文件。
 
 2. 初始化段添加创建输出文件
 
@@ -280,7 +280,7 @@ for (const auto &pose : poses)
 frame++; // 增加帧编号
 ```
 
->tips:下列演示c++容器遍历元素的方法
+> tips:下列演示c++容器遍历元素的方法
 
 ```cpp
 // 使用传统的for循环（适用于索引访问的容器，如std::vector）：
@@ -342,4 +342,4 @@ cuda_add_executable(posenet posenet.cpp)
 target_link_libraries(posenet jetson-inference)
 ```
 
-然后`cmake`生成makefile，`make`执行makefile完成代码编译生成。
+然后 `cmake`生成makefile，`make`执行makefile完成代码编译生成。
