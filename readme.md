@@ -343,3 +343,7 @@ target_link_libraries(posenet jetson-inference)
 ```
 
 然后 `cmake`生成 makefile，`make`执行 makefile 完成代码编译生成。
+
+## 结果展示
+
+![img](image/ikun_show.gif)
