@@ -1,8 +1,11 @@
 # 源码解读
 
 [自定义代码调用jetson_inference](https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-example-2.md)
+
 [posenet官方例子/pose_estimatiom自定义模板](https://github.com/dusty-nv/jetson-inference/blob/master/examples/posenet/posenet.cpp)
+
 [posenet官方例子使用文档](https://github.com/dusty-nv/jetson-inference/blob/master/docs/posenet.md)
+
 [posenet库](https://github.com/dusty-nv/jetson-inference/blob/master/c/poseNet.h)
 
 ## posenet.cpp逐行代码解读
@@ -149,7 +152,7 @@ const uint32_t overlayFlags = poseNet::OverlayFlagsFromStr(cmdLine.GetString("ov
 cmdLine.GetString(“命令字符串”，“命令值字符串”，...)[用法见](https://rawgit.com/dusty-nv/jetson-inference/master/docs/html/group__commandLine.html#a79b0fc5258dbd12ba4b0cb5df77d424c),匹配上返回“命令值字符串”指针，反之则返回NULL。
 poseNet::OverlayFlagsFromStr()[用法见](https://rawgit.com/dusty-nv/jetson-inference/master/docs/html/group__poseNet.html#a1bebbf414fd20210c469223433bb604a)，将字符串序列转换为 OverlayFlags 枚举。
 该代码完成输出视频的处理相关设置:==有关键点并连接==。
-![](image\overlayflag.png)
+![](https://github.com/zcliln615/jetson-inference_owncode/blob/main/image/overlayflag.png)
 
 #### 主循环
 
@@ -216,7 +219,7 @@ net->PrintProfilerTimes();
 
 NV_TENSORRT_MAJOR, NV_TENSORRT_MINOR, NV_TENSORRT_PATCH等宏输出TensorRT的相关性信息。
 net->GetPrecision()返回当前使用的网络精度，net->GetNetworkFPS()返回当前使用的网络帧率
-![](image\网络精度.png)
+![](https://github.com/zcliln615/jetson-inference_owncode/blob/main/image/网络精度.png)
 
 4. 释放内存
 
